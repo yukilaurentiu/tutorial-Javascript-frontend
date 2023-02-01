@@ -49,106 +49,102 @@ console.log(yearsUntinRetirement(1980, "Bob"));
 // ------------------------------------------------
 // Charenge 1
 
-function calcAverage(first, second, third){
+function calcAverage(first, second, third) {
   return (first + second + third) / 3;
 }
 
 let scoreDol = calcAverage(44, 23, 71);
 let scoreKoa = calcAverage(65, 54, 49);
 
-
-function checkWinner(avgDolhins, avgKoalas){
-  if(avgDolhins >= avgKoalas * 2){
-    console.log('Winner is Dolhins');
-  } else if (avgKoalas >= avgDolhins * 2){
-    console.log('Winner is Koalas');
-  } else console.log('No winners');
+function checkWinner(avgDolhins, avgKoalas) {
+  if (avgDolhins >= avgKoalas * 2) {
+    console.log("Winner is Dolhins");
+  } else if (avgKoalas >= avgDolhins * 2) {
+    console.log("Winner is Koalas");
+  } else console.log("No winners");
 }
 
-checkWinner(scoreDol,scoreKoa);
+checkWinner(scoreDol, scoreKoa);
 
 scoreDol = calcAverage(85, 54, 41);
 scoreKoa = calcAverage(23, 34, 27);
 
-checkWinner(scoreDol,scoreKoa);
+checkWinner(scoreDol, scoreKoa);
 // ------------------------------------------------
 
-const friends = ['Michael', 'Steven', 'Peter'];
-friends.push('Jay');
-friends.unshift('John');
+const friends = ["Michael", "Steven", "Peter"];
+friends.push("Jay");
+friends.unshift("John");
 friends.pop(); // last element
 friends.shift(); //first element
-friends.includes('Steven'); //boolean
+friends.includes("Steven"); //boolean
 
 // ------------------------------------------------
 // challenge 2
 
 const bills = [125, 555, 44];
 
-function calcTip(bill){
-  if(bill >= 50 && bill <= 300){
-     return bill * 0.15;
+function calcTip(bill) {
+  if (bill >= 50 && bill <= 300) {
+    return bill * 0.15;
   } else {
-    return bill * 0.2; 
+    return bill * 0.2;
   }
 }
-
 
 // const ti = bills.map((v) => calcTip(v))
 // const to = bills.map((v) => calcTip(v) + v)
 // console.log(to)
 
-let tip = calcTip(bills[0])
-const tips = [tip]
-tip = calcTip(bills[1])
-tips.push(tip + bills[1])
-tip = calcTip(bills[2])
-tips.push(tip + bills[2])
-console.log(tips)
+let tip = calcTip(bills[0]);
+const tips = [tip];
+tip = calcTip(bills[1]);
+tips.push(tip + bills[1]);
+tip = calcTip(bills[2]);
+tips.push(tip + bills[2]);
+console.log(tips);
 
-
-const total = [(tips[0] + bills[0])]
-total.push(tips[1] + bills[1])
-total.push(tips[2] + bills[2])
-console.log(total)
+const total = [tips[0] + bills[0]];
+total.push(tips[1] + bills[1]);
+total.push(tips[2] + bills[2]);
+console.log(total);
 
 // const tips = [calcTip(bills[0]), calcTip(bills[1]),calcTip(bills[2])]
 // ------------------------------------------------
 
 const jonas = {
-  firstName: 'Jonas',
-  lastName: 'Schmedtmann',
-  friends: ['Michael', 'Peter', 'Steven'],
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  friends: ["Michael", "Peter", "Steven"],
   birthYear: 1991,
-  job: 'teacher',
+  job: "teacher",
   hasDriverlicense: true,
 
-  calsAge: function(){
+  calsAge: function () {
     console.log(this);
     return 2037 - this.birthYear;
   },
 
-  calsAge1: function(){
+  calsAge1: function () {
     this.age = 2037 - this.birthYear;
     return this.age;
   },
 
-  getSummary: function(){
-    const answer = this.hasDriverlicense ? 'a' : 'no';
+  getSummary: function () {
+    const answer = this.hasDriverlicense ? "a" : "no";
     return `${this.firstName} is a ${this.calsAge()}-year old ${this.job},
-    and he has ${answer} driver's license.`
-  }
+    and he has ${answer} driver's license.`;
+  },
+};
 
-}
+console.log(jonas.firstName);
+console.log(jonas["firstName"]);
 
-console.log(jonas.firstName)
-console.log(jonas['firstName'])
-
-jonas.location = 'Portugal'
+jonas.location = "Portugal";
 
 //Challenge
 const bestFriend = jonas.friends[0];
-console.log(bestFriend)
+console.log(bestFriend);
 
 console.log(jonas.calsAge());
 console.log(jonas.age);
@@ -161,3 +157,56 @@ console.log(jonas.getSummary());
 // }
 // ------------------------------------------------
 // Challenge 3
+
+const mark = {
+  fullName: "Mark Miller",
+  height: 1.69,
+  weight: 78,
+  calsBMI: function () {
+    this.bmi = this.weight / this.height ** 2;
+    return this.bmi;
+  },
+};
+
+const john = {
+  fullName: "John Smith",
+  height: 1.95,
+  weight: 92,
+  calsBMI: function () {
+    this.bmi = this.weight / this.height ** 2;
+    return this.bmi;
+  },
+};
+
+mark.calsBMI();
+john.calsBMI();
+
+if (mark.bmi > john.bmi) {
+  console.log(
+    `${mark.fullName}'s BMI(${mark.bmi}) is higher than 
+     ${john.fullName}'s (${john.bmi})!`
+  );
+} else {
+  console.log(
+    `${john.fullName}'s BMI(${john.bmi}) is higher than 
+     ${mark.fullName}'s (${mark.bmi})!`
+  );
+}
+// ------------------------------------------------
+
+for (let rep = 1; rep <= 10; rep++) {
+  console.log("hello");
+}
+
+const jona = [
+  "Jonas",
+  "Schmedtmann",
+  ["Michael", "Peter", "Steven"],
+  1991,
+  "teacher",
+  true,
+];
+
+for (let i = 0; i < jona.length; i++) {
+  console.log(jona[i], typeof jona[i]);
+}
