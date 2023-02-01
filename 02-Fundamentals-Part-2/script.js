@@ -204,9 +204,68 @@ const jona = [
   ["Michael", "Peter", "Steven"],
   1991,
   "teacher",
-  true,
 ];
 
 for (let i = 0; i < jona.length; i++) {
   console.log(jona[i], typeof jona[i]);
 }
+
+const types = [];
+
+for (let i = 0; i < jona.length; i++) {
+  // types[i] = typeof jona[i];
+  types.push(typeof jona[i]);
+}
+
+console.log("---ONLY STRINGS---");
+for (let i = 0; i < jona.length; i++) {
+  if (typeof jona[i] !== "string") continue;
+  console.log(jona[i], typeof jona[i]);
+}
+
+console.log("---BREAK WITH NUMBER---");
+for (let i = 0; i < jona.length; i++) {
+  if (typeof jona[i] === "number") break;
+  console.log(jona[i], typeof jona[i]);
+}
+
+// for (let rep = 1; rep < 11; rep++) {
+//   console.log(`Lifting weights repetition ${rep}`);
+// }
+
+let rep = 1;
+while (rep < 11) {
+  // console.log(`Lifting weights repetition ${rep}`);
+  rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+  console.log(`You rolloed a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+}
+// ------------------------------------------------
+// Challenge 4
+
+const bIlls = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tIps = [];
+let tOtals = [];
+
+for(let i = 0; i < bIlls.length; i++){
+  tIps.push(calcTip(bIlls[i]));
+  tOtals.push(tIps[i]+ bIlls[i]);
+}
+
+console.log(tIps, tOtals)
+
+function calcAverage(arr){
+  let sum = 0;
+  for(let i = 0; i < arr.length; i++){
+    sum += arr[i]
+  }
+  return sum / arr.length
+  
+}
+
+console.log(calcAverage(tOtals))
