@@ -1,9 +1,5 @@
 'use strict';
 
-// Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -111,7 +107,7 @@ const {
 console.log(open, close);
 // --------------------------------------------------------------------------
 const arr1 = [7, 8, 9];
-const newArr1 = [1, 2, ...arr1]; //spred
+const newArr1 = [1, 2, ...arr1]; //spread operator
 console.log(newArr1);
 console.log(...newArr1); // value out of array
 
@@ -139,12 +135,61 @@ const ingredients = [
 restaurant.orderPasta(...ingredients);
 
 // Objects
-const newRestaurant = {foudedIn: 1998, ...restaurant, founder: 'Guiseppe'}
-console.log(newRestaurant)
+const newRestaurant = { foudedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
 
-const restaurantCopy = {...restaurant};
-restaurantCopy.name = 'Ristorante Roma'
-console.log(restaurant.name, 'and', restaurantCopy.name)
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurant.name, 'and', restaurantCopy.name);
 
 // --------------------------------------------------------------------------
 
+const [c, d, ...others] = [1, 2, 3, 4, 5];
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+// skipped menu(pasta) is not in the array
+console.log(pizza, risotto, otherFood);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(2, 3);
+add(8, 2, 3, 4, 5);
+const g = [23, 5,7];
+add(...g);
+
+// Nullish coalesing operator (Null and undefined)
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(`correct guests number are ${guestCorrect}`)
+
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20
+}
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi'
+}
+
+rest2.numGuests = rest2.numGuests || 10; //added numGuest
+
+rest2.numGuests ||= 10;
+
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
