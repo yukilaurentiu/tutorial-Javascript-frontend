@@ -178,7 +178,7 @@ console.log(`correct guests number are ${guestCorrect}`)
 
 const rest1 = {
   name: 'Capri',
-  numGuests: 20
+  numGuests: 0
 }
 
 const rest2 = {
@@ -186,10 +186,19 @@ const rest2 = {
   owner: 'Giovanni Rossi'
 }
 
+// OR assignment operater
 rest2.numGuests = rest2.numGuests || 10; //added numGuest
-
 rest2.numGuests ||= 10;
 
+rest1.numGuests ??=10;
+console.log(rest1);
+
+// AND assignment operater
+rest2.owner = rest2.owner && '<Anonymous>';
+rest2.owner &&= '<Anonymous>';
+
+console.log(rest2);
+console.log(rest1);
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
