@@ -64,6 +64,34 @@ let players1 = game.players[0];
 let players2 = game.players[1];
 console.log(players1,'and',players2)
 
+const [gk, ...fieldPlayers] = players1;  //rest operater
+console.log(gk, fieldPlayers);
 
-console.log(game)
+const allPlayer = [...players1, ...players2];
+console.log(allPlayer)
 
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final)
+
+
+const {
+  team1: team1,
+  x: draw,
+  team2:team2,
+} = game.odds;
+
+// const {odds: {team1, x: draw, team2},} = game;
+console.log(team1, draw, team2)
+
+function printGoals(...players){
+  console.log(`Score is ${players.length}`)
+  for(let i = 0; i < players.length; i++){
+     console.log(players[i]);
+  }
+}
+
+printGoals('Davies', 'Muller', 'Lewandowski','Kimmich');
+printGoals(...game.scored);
+
+team1 < team2  && console.log('Team1 likley win');
+team2 < team1  && console.log('Team2 likley win');
