@@ -1,6 +1,17 @@
 'use strict';
 
 // Data needed for first part of the section
+const wholeWeekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const hour = {
+  [wholeWeekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [`day-${2 + 4}`]: {
+    open: 0,
+    close: 24,
+  },
+};
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -8,7 +19,9 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starterIndex, mainIndex) {
+  hour,
+
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -31,7 +44,7 @@ const restaurant = {
       open: 11,
       close: 23,
     },
-    sat: {
+    [wholeWeekdays[5]]: {
       open: 0, // Open 24 hours
       close: 24,
     },
@@ -165,7 +178,7 @@ const add = function (...numbers) {
 
 add(2, 3);
 add(8, 2, 3, 4, 5);
-const g = [23, 5,7];
+const g = [23, 5, 7];
 add(...g);
 
 // Nullish coalesing operator (Null and undefined)
@@ -174,23 +187,23 @@ const guests = restaurant.numGuests || 10;
 console.log(guests);
 
 const guestCorrect = restaurant.numGuests ?? 10;
-console.log(`correct guests number are ${guestCorrect}`)
+console.log(`correct guests number are ${guestCorrect}`);
 
 const rest1 = {
   name: 'Capri',
-  numGuests: 0
-}
+  numGuests: 0,
+};
 
 const rest2 = {
   name: 'La Piazza',
-  owner: 'Giovanni Rossi'
-}
+  owner: 'Giovanni Rossi',
+};
 
 // OR assignment operater
 rest2.numGuests = rest2.numGuests || 10; //added numGuest
 rest2.numGuests ||= 10;
 
-rest1.numGuests ??=10;
+rest1.numGuests ??= 10;
 console.log(rest1);
 
 // AND assignment operater
@@ -202,16 +215,45 @@ console.log(rest1);
 
 // --------------------------------------------------------------------------
 
-menuComplete
+menuComplete;
 
-for(const item of menuComplete) console.log(item);
-for(const item of menuComplete.entries()){
+for (const item of menuComplete) console.log(item);
+for (const item of menuComplete.entries()) {
   console.log(`${item[0] + 1}: ${item[1]}`);
 }
 
-for(const [i, el] of menuComplete.entries()){
+for (const [i, el] of menuComplete.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
+
+if (restaurant.hour && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.mon.open);
+}
+
+// --------------------------------------------------------------------------
+//With optional chainig
+console.log(restaurant.openingHours?.mon?.open); //-> undifind
+
+for (const day of wholeWeekdays) {
+  // ?? Nullish values are null and undifined NOT 0
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+//Method
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exsit');
+console.log(restaurant.orderPizza?.(0, 1) ?? 'Method does not exsit');
+
+//Arrays
+const users = [
+  {name: 'Jonas', email: 'hello@jonas.io'}
+];
+
+console.log(users[0]?.name ?? "User array is empty")
+// if(users.length > 0) console.log(users[0].name);
+// else console.log("User array is empty") // same resoult
+
+// --------------------------------------------------------------------------
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
