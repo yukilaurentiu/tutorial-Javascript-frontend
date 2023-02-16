@@ -253,6 +253,26 @@ console.log(users[0]?.name ?? "User array is empty")
 // if(users.length > 0) console.log(users[0].name);
 // else console.log("User array is empty") // same resoult
 
+//Propetry NAMES
+const properties = Object.keys(openingHours)
+let openStr = `We are open on ${properties.length}days: `;
+
+for (const day of properties){
+  openStr += `${day},`;
+}
+console.log(openStr)
+
+//Property VALUES
+const value = Object.values(openingHours);
+
+// Entrie object
+const entries = Object.entries(openingHours)
+console.log(entries) // key and value in array
+
+// [key, value] 
+for(const [key, {open, close}] of entries){
+  console.log(`On ${key} we open at ${open} and close at ${close}`)
+}
 // --------------------------------------------------------------------------
 // Data needed for a later exercise
 const flights =
