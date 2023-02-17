@@ -273,6 +273,28 @@ console.log(entries) // key and value in array
 for(const [key, {open, close}] of entries){
   console.log(`On ${key} we open at ${open} and close at ${close}`)
 }
+
+// -------------------------------------------------------------------------
+
+// Set -> unique array
+const orderSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pasta',
+  'Risotto',
+  'Pasta'
+]);
+
+console.log(orderSet.size); // 3 
+console.log(orderSet.has('Bread'));
+orderSet.add('Garlic Bread');
+orderSet.delete('Pasta');
+// orderSet.clear(); <- make empty
+
+for(const order of orderSet){
+  console.log(order);
+}
+
 // --------------------------------------------------------------------------
 // Data needed for a later exercise
 const flights =
