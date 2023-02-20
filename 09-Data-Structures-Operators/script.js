@@ -294,7 +294,32 @@ orderSet.delete('Pasta');
 for(const order of orderSet){
   console.log(order);
 }
+// -------------------------------------------------------------------------
 
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal'));
+
+rest
+.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+.set('open', 11)
+.set('close', 23)
+.set(true, 'We are open')
+.set(false, 'We are closed')
+
+console.log(rest.get('name'))
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
+
+console.log(rest.has('categories'));
+// set a key h1 
+rest.set(document.querySelector('h1'), 'Heading');  
+rest.set([1,2], 'Test')
+// cannot get value, because both array stored different place
+console.log(rest.get([1,2])); 
+// so first make initial array then it works
 // --------------------------------------------------------------------------
 // Data needed for a later exercise
 const flights =
