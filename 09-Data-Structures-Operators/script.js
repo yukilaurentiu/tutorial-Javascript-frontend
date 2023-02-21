@@ -320,6 +320,49 @@ rest.set([1,2], 'Test')
 // cannot get value, because both array stored different place
 console.log(rest.get([1,2])); 
 // so first make initial array then it works
+
+const question = new Map([
+  ['question', 'What is the best programmin languege in the world?'
+],
+[1, 'C'],
+[2, 'Java'],
+[3, 'Javescript'],
+['correct', 3],
+[true, 'Correct'],
+[false, 'Try again']
+])
+
+console.log(question)
+
+// Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap)
+
+for (const [key, value] of question){
+  if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+//Quiz app
+// const answer = Number(prompt('Your answer')); //convert number
+const answer = 3;
+console.log(answer);
+
+if(answer === 1 || answer === 2 || answer === 3){
+  // if (answer === question.get('correct')){
+  // console.log(question.get(true))
+  // } else {
+  //   console.log(question.get(false));
+  // }
+  console.log(question.get(question.get('correct') === answer))
+} else console.log('Please type only 1,2 or 3')
+
+
+//Convert map to array
+console.log([...question])
+// console.log(question.entries())
+console.log([...question.keys()])
+console.log([...question.values()])
 // --------------------------------------------------------------------------
 // Data needed for a later exercise
 const flights =
