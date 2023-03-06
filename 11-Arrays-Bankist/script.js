@@ -78,6 +78,12 @@ const displayMovments = function(movements){
 };
 displayMovments(account1.movements);
 
+const clacDisplayBlance = function(movments) {
+  const balance = movments.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+}
+clacDisplayBlance(account1.movements);
+
 const createUsernames = function(accounts){
   accounts.forEach(function(acc){
     acc.username =  acc.owner.toLowerCase().split(' ').map(function(name) {
@@ -87,6 +93,7 @@ const createUsernames = function(accounts){
  
 }
 createUsernames(accounts);
+
 
 /////////////////////////////////////////////////
 
@@ -185,3 +192,21 @@ console.log(deposites)
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+/////////////////////////////////////////////////
+// accumulater -> snowball
+const baLance = movements.reduce(function(acc, cur, i ,array){
+  return acc + cur 
+}, 0);
+console.log(baLance);
+
+// let balance2 = 0;
+// for(const mov of movments) {
+//   balance2 += mov;
+// }
+
+// Maxiumum value 
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
