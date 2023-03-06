@@ -77,6 +77,17 @@ const displayMovments = function(movements){
   })
 };
 displayMovments(account1.movements);
+
+const createUsernames = function(accounts){
+  accounts.forEach(function(acc){
+    acc.username =  acc.owner.toLowerCase().split(' ').map(function(name) {
+      return name[0];
+    }).join('');
+  })
+ 
+}
+createUsernames(accounts);
+
 /////////////////////////////////////////////////
 
 /////////////////////////////////////////////////
@@ -166,3 +177,11 @@ const movementsDescription = movements.map((mov, i) =>
 );
 
 console.log(movementsDescription);
+/////////////////////////////////////////////////
+const deposites = movements.filter(function(mov){
+  return mov > 0;
+});
+console.log(deposites)
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
