@@ -152,3 +152,17 @@ currenciesUnique.forEach(function(value, _, m){
   console.log(`${value}: ${value}`);
 });
 
+/////////////////////////////////////////////////
+const eurToUsd = 1.1;
+// map function does not affect original array
+// const movementsUSD = movements.map(function(mov){
+//   return mov * eurToUsd;
+// })
+
+const movementsUSD = movements.map(mov => mov * eurToUsd);
+console.log(movementsUSD);
+const movementsDescription = movements.map((mov, i) =>
+  `Movement ${i +1}: You ${mov > 0 ? 'deposited': 'withdrew'} ${Math.abs(mov)}`
+);
+
+console.log(movementsDescription);
