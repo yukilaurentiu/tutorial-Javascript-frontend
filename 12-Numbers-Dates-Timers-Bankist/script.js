@@ -164,7 +164,7 @@ btnLogin.addEventListener('click', function (e) {
   );
   console.log(currentAccount);
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+  if (currentAccount?.pin === + inputLoginPin.value) {
     // Display UI and message
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -182,7 +182,7 @@ btnLogin.addEventListener('click', function (e) {
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
+  const amount = + inputTransferAmount.value;
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
@@ -206,7 +206,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = + inputLoanAmount.value;
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -251,3 +251,26 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+console.log(23 === 23.0);
+
+// Conversion
+console.log(Numner('23'))
+console.log(+ '23') // become number
+
+// Parsing
+console.log(Number.parseInt('30px', 10)); //works
+console.log(Number.parseInt('e23', 10));  //not
+
+console.log(Number.parseFloat('2.5rem'))
+
+// Check if value is NaN
+console.log(Number.isNaN(20)); //false
+console.log(Number.isNaN('20'));
+console.log(Number.isNaN(+ '20X'));
+
+// Checking ifvalue is number
+console.log(Number.isFinite(20)) // is it number or not
+
+console.log(Number.isInteger(23));
+console.log(Number.isInteger(23.0));
