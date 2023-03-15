@@ -255,7 +255,7 @@ btnSort.addEventListener('click', function (e) {
 console.log(23 === 23.0);
 
 // Conversion
-console.log(Numner('23'))
+console.log(Number('23'))
 console.log(+ '23') // become number
 
 // Parsing
@@ -275,7 +275,7 @@ console.log(Number.isFinite(20)) // is it number or not
 console.log(Number.isInteger(23));
 console.log(Number.isInteger(23.0));
 
-console.log(Math.squrt(25));
+console.log(Math.sqrt(25));
 const randomInt = (min, max) => Math.floor(Math.ramdom() * (max - min) + 1) + min;
 // 0...1 -> 0...(max - min) -> min...(max - min + min) 
 
@@ -296,3 +296,32 @@ console.log(Math.floor(23.3)); //-24
 
 // Rounding decimals
 console.log((2.7).toFixed(0)) // retunr String
+
+console.log( 5 % 2); // 5 = 2 * 2 + 1
+
+labelBalance.addEventListener('click', function(){
+  [...document.querySelectorAll('.movements__row')].forEach(function(row, i){
+    // 0, 2, 4, 6
+    if(i % 2 === 0) row.style.backgroundColor = 'orangered';
+    // 0, 3, 6, 9
+    if(i % 3 === 0 ) row.style.backgroundColor = 'blue';
+  });
+});
+
+// 287,460,000,000 numeric separator
+const diameter = 287_460_000_000;
+const PI = 3.14_15;
+
+console.log(2 ** 53 -1); // biggest number
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2313945306233267545742n);
+
+// Operations type is BigInt
+console.log(10000n + 10000n);
+console.log(2313945306233267545742n * 10000n)
+
+// Exceptions
+console.log(20n > 15); //true
+console.log(20n == '20'); //true
+
+console.log(11n / 3n) // 3n
