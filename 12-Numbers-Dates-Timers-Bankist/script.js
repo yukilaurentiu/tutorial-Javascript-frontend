@@ -325,7 +325,6 @@ btnLoan.addEventListener('click', function (e) {
   // Reset timer
   clearInterval(timer);
   timer = startLogOutTimer();
-}
 });
 
 btnClose.addEventListener('click', function (e) {
