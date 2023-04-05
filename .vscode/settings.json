@@ -1,0 +1,8 @@
+{
+  "editor.tabSize": 2,
+  "prettier.embeddedLanguageFormatting": "auto",
+  "prettier.useEditorConfig": false,
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": true,
+  "files.autoSave": "afterDelay"
+}

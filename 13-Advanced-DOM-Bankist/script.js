@@ -69,3 +69,35 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
   message.remove();
   // message.parentElement.removeChild(message);
 });
+
+///////////////////////////////////////
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%'
+console.log(getComputedStyle(message).height);
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orange');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+
+// Non-standard
+console.log(logo.desiner); // cannot access
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.src); 
+console.log(logo.getAttribute('src'));
+
+// Data attributes
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add('c', 'j');
+logo.classList.toggle('c');
+
+// Don't use
+logo.className = 'jonas'
