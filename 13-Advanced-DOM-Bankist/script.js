@@ -78,7 +78,7 @@ message.style.width = '120%'
 console.log(getComputedStyle(message).height);
 message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orange');
+// document.documentElement.style.setProperty('--color-primary', 'orange');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
@@ -100,4 +100,34 @@ logo.classList.add('c', 'j');
 logo.classList.toggle('c');
 
 // Don't use
-logo.className = 'jonas'
+// logo.className = 'jonas'
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function(e){
+  const s1coords = section1.getBoundingClientRect();
+  console.log(e.target.getBoundingClientRect());
+  console.log('current scroll (X/Y)', window.pageXOffset, pageYOffset)
+
+// Scrolling 
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
+  
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // })
+  section1.scrollIntoView({behavior: 'smooth'}) // new version
+});
+
+const h1 = document.querySelector('h1');
+// mouseenter = hover
+const alertH1 = function(e){
+  alert('addEventLister: Great!')
+}
+h1.addEventListener('mouseenter', alertH1);
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000)
+;
+// h1.onmouseenter = function(e){
+//   alert('addEventLister: Great! you are reading')}
